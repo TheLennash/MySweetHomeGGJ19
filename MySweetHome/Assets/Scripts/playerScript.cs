@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerScript : MonoBehaviour{
 
     public float speed;
+    private bool canGrab = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -20,10 +21,25 @@ public class playerScript : MonoBehaviour{
 
     void PlayerMovement() {
 
-        if (Input.GetKey(KeyCode.A)) {
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
+        var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        var vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+        transform.Translate(horizontal, 0, vertical);
+
+    }
+
+    void GrabKid() {
+
+
+
+    }
+
+    //Defines if player can grab kid
+    private void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "Kid") {
+            canGrab = true;
         }
-        
+
 
     }
 }
