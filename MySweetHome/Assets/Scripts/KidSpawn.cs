@@ -1,18 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class KidSpawn : MonoBehaviour
 {
+    public KidScript KidPrefab;
+
+    public float SpawnRate = 5f;
+
+    private float startTime;
+
+    List<KidScript> Kids = new List<KidScript>();
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Update()
     {
-        
+        if (Time.time - startTime > SpawnRate)
+        {
+            startTime = Time.time;
+            SpawnKid();
+        }
+
+    }
+
+    public void SpawnKid()
+    {
+
+        var kid = GameObject.Instantiate<KidScript>(KidPrefab, this.transform.position, Quaternion.identity, transform);
+        kid.Initialize();
+        Kids.Add(kid);
+
     }
 }
