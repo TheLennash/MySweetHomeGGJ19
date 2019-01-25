@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerScript : MonoBehaviour{
 
+    public Transform Rotation;
+
     public float speed;
     private bool canGrab = false;
 
@@ -14,6 +16,7 @@ public class playerScript : MonoBehaviour{
 
     // Update is called once per frame
     void Update() {
+        transform.rotation = Rotation.rotation;
         PlayerMovement();
 
     }
@@ -24,7 +27,7 @@ public class playerScript : MonoBehaviour{
         var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         var vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-        transform.Translate(horizontal, 0, vertical);
+        transform.Translate(-horizontal, 0, -vertical);
 
     }
 
