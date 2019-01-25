@@ -31,7 +31,7 @@ public class KidSpawn : MonoBehaviour
 
     public void SpawnKid()
     {
-
+        Debug.Log("SpawnKid " + Kids.Count);
         var kid = GameObject.Instantiate<KidScript>(KidPrefab, this.transform.position, Quaternion.identity, transform);
         kid.Initialize();
         Kids.Add(kid);
