@@ -68,7 +68,7 @@ public class KidScript : MonoBehaviour
     public void GoEatCandy()
     {
         // go to location in circle of house;
-        var GoTo = Random.insideUnitCircle.normalized * GameSize;
+        var GoTo = (Random.insideUnitCircle * GameSize);
 
         if (!this.GetComponent<NavMeshAgent>().SetDestination(GoTo))
         {
@@ -119,26 +119,31 @@ public class KidScript : MonoBehaviour
             var wall = other.GetComponent<WallBehaviour>();
             if (wall != null)
             {
-                if (wall.TakeCandies(CandyPrefrence))
+
+                for (int i = 0; i < Fatness; i++)
                 {
-                    Debug.Log("Take Candy");
-                    //grab candy;
-                    foreach (var a in animators)
+                    if (wall.TakeCandies(CandyPrefrence))
                     {
-                        a.SetTrigger("EatCandy");
+                        Debug.Log("Take Candy");
+                        CandyCount++;
+                        GoEatCandy();
                     }
-
-                    CandyCount++;
-
-                    GoEatCandy();
+                    else
+                    {
+                        // try again
+                        //could not take candy.
+                        Debug.LogWarning("could not take candy");
+                        GoGetCandy();
+                        break;
+                    }
                 }
-                else
+
+                //grab candy;
+                foreach (var a in animators)
                 {
-                    // try again
-                    //could not take candy.
-                    Debug.Log("could not take candy");
-                    GoGetCandy();
+                    a.SetTrigger("EatCandy");
                 }
+
             }
         }
         //Destroy(this.gameObject);
