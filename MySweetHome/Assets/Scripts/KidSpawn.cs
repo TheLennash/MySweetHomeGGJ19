@@ -41,7 +41,7 @@ public class KidSpawn : MonoBehaviour
     {
         var spawnLoc = SpawnLocations[GetRandomSpawnIndex()];
 
-        Debug.Log("SpawnKid " + SpawnCount);
+        //Debug.Log("SpawnKid " + SpawnCount);
         var kid = GameObject.Instantiate<KidScript>(KidPrefab, spawnLoc.position, Quaternion.identity, transform);
         kid.Initialize(House);
 

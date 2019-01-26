@@ -1,9 +1,7 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEditor;
-using System.Linq;
-using System;
+using UnityEngine;
 
 namespace BreinWave.Editor
 {
@@ -53,6 +51,9 @@ namespace BreinWave.Editor
         bool meshSetSelected;
 
 
+        public float MaxSize = 2;
+        public float MinSize = 1;
+
 
         void OnGUI()
         {
@@ -73,7 +74,33 @@ namespace BreinWave.Editor
             NameIteratively();
             GUILayout.Space(5);
             TakeScreenShot();
+            GUILayout.Space(5);
+            RandomizeSize();
             Repaint();
+        }
+
+        public void RandomizeSize()
+        {
+
+            MaxSize = EditorGUILayout.FloatField("MaxSize", MaxSize);
+            MinSize = EditorGUILayout.FloatField("MinSize", MinSize);
+
+            if (GUILayout.Button("Resize selection"))
+            {
+
+                Transform[] selected = GetAllSelected();
+                foreach (Transform transform in selected)
+                {
+                    if (transform == null)
+                        continue;
+
+                    var size = UnityEngine.Random.Range(MinSize, MaxSize);
+                    transform.localScale = new Vector3(size, size, size);
+
+                }
+
+            }
+
         }
 
 
@@ -393,7 +420,7 @@ namespace BreinWave.Editor
             {
                 if (selected[i] != null)
                 {
-                    Transform replacement = (Transform)Instantiate(ReplacementObj.transform, selected[i].position, selected[i].rotation) as Transform;
+                    Transform replacement = Instantiate(ReplacementObj.transform, selected[i].position, selected[i].rotation) as Transform;
                     replacement.parent = selected[i].parent;
                     //replacement.name = ReplacementObj.name;
 
