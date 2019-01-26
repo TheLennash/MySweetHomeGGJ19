@@ -16,7 +16,7 @@ public class WallBehaviour : MonoBehaviour
             case nameof(Marshmellow):
                 return MarshmellowCount;
             case nameof(Chocolate):
-                return CookiesCount;
+                return ChocolateCount;
             case nameof(CandyCane):
                 return CandyCaneCount;
             default:
