@@ -10,8 +10,19 @@ public class playerScript : MonoBehaviour {
     public float speed;
 
     public bool canGrab;
-
     public GameObject grabbedKid;
+
+
+    public WallBehaviour currentWall;
+    public bool canRepair;
+
+
+    public Dictionary<string, int> Candies = new Dictionary<string, int>() {
+        { nameof(Cookie) , 0 },
+        { nameof(Marshmellow) , 0 },
+        { nameof(Chocolate) , 0 },
+        { nameof(CandyCane) , 0 }
+    };
 
 
 
@@ -24,18 +35,12 @@ public class playerScript : MonoBehaviour {
     void Update() {
         transform.rotation = Rotation.rotation;
         PlayerMovement();
+        GrabKid();
 
     }
 
 
     void PlayerMovement() {
-
-        //Kid grab
-        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
-            grabbedKid.SetActive(false);
-            Debug.Log("Got the kid");
-        }
-
 
         //Defines player movement direction
         var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -75,6 +80,18 @@ public class playerScript : MonoBehaviour {
             child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y + 180, -vertical);
         }
 
+
+    }
+
+    void GrabKid() {
+        //Kid grab
+        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
+            grabbedKid.SetActive(false);
+            Debug.Log("Got the kid");
+        }
+    }
+
+    void RepairWall() {
 
     }
 
