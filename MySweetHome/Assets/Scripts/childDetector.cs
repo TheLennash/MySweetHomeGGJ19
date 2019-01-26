@@ -48,6 +48,11 @@ public class childDetector : MonoBehaviour
                 ps.currentWall = cw;
             }
         }
+
+        if(other.gameObject.tag == "Oven") {
+            ps.canMelt = true;
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -59,6 +64,9 @@ public class childDetector : MonoBehaviour
         if (other.gameObject.tag == "Building")
         {
             cw = null;
+        }
+        if (other.gameObject.tag == "Oven") {
+            ps.canMelt = false;
         }
     }
 

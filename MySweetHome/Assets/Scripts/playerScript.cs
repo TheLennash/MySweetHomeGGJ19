@@ -17,6 +17,9 @@ public class playerScript : MonoBehaviour
     public WallBehaviour currentWall;
     public bool canRepair;
 
+    public furnaceScript fs;
+    public bool canMelt;
+
 
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
         { nameof(Cookie) , 0 },
@@ -38,8 +41,10 @@ public class playerScript : MonoBehaviour
     {
         transform.rotation = Rotation.rotation;
         PlayerMovement();
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q)) {
             GrabKid();
+            PutKidInFurnace();
+        }
     }
 
 
@@ -104,6 +109,17 @@ public class playerScript : MonoBehaviour
                     Candies[candy.Key] = candy.Value - 1;
                 }
             }
+        }
+    }
+
+    void PutKidInFurnace() {
+        if (canMelt) {
+            for (int i = 0; i < grabbedKid.Length; i++) {
+                fs.kidList.Add(grabbedKid[i]);
+                Destroy(grabbedKid[i]);
+            }
+
+
         }
     }
 }
