@@ -6,9 +6,12 @@ public class playerScript : MonoBehaviour {
 
     public Transform Rotation;
     public Transform child;
-    public Transform house;
 
     public float speed;
+
+    public bool canGrab;
+
+    public GameObject grabbedKid;
 
 
 
@@ -27,8 +30,12 @@ public class playerScript : MonoBehaviour {
 
     void PlayerMovement() {
 
-        //distance between player and house
-        
+        //Kid grab
+        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
+            grabbedKid.SetActive(false);
+            Debug.Log("Got the kid");
+        }
+
 
         //Defines player movement direction
         var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -40,9 +47,9 @@ public class playerScript : MonoBehaviour {
         var angle = Vector3.Angle(moveDir, transform.forward); //
 
 
-        
+
         transform.Translate(moveDir);
-        
+
 
 
         //child.transform.eulerAngles =  new Vector3(0,angle, 0);
@@ -72,13 +79,5 @@ public class playerScript : MonoBehaviour {
     }
 
 
-    //Defines if player can grab kid
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log("hit building");
-
-        if (other.gameObject.tag == "Building") {
-          
-        }
-    }
 
 }
