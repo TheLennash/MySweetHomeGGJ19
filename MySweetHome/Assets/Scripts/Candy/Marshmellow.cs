@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Marshmellow : MonoBehaviour
+public class Marshmellow : Candy
 {
     // Start is called before the first frame update
     void Start()

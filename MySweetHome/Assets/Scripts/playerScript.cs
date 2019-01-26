@@ -6,9 +6,23 @@ public class playerScript : MonoBehaviour {
 
     public Transform Rotation;
     public Transform child;
-    public Transform house;
 
     public float speed;
+
+    public bool canGrab;
+    public GameObject grabbedKid;
+
+
+    public WallBehaviour currentWall;
+    public bool canRepair;
+
+
+    public Dictionary<string, int> Candies = new Dictionary<string, int>() {
+        { nameof(Cookie) , 0 },
+        { nameof(Marshmellow) , 0 },
+        { nameof(Chocolate) , 0 },
+        { nameof(CandyCane) , 0 }
+    };
 
 
 
@@ -21,14 +35,12 @@ public class playerScript : MonoBehaviour {
     void Update() {
         transform.rotation = Rotation.rotation;
         PlayerMovement();
+        GrabKid();
 
     }
 
 
     void PlayerMovement() {
-
-        //distance between player and house
-        
 
         //Defines player movement direction
         var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -40,9 +52,9 @@ public class playerScript : MonoBehaviour {
         var angle = Vector3.Angle(moveDir, transform.forward); //
 
 
-        
+
         transform.Translate(moveDir);
-        
+
 
 
         //child.transform.eulerAngles =  new Vector3(0,angle, 0);
@@ -71,14 +83,18 @@ public class playerScript : MonoBehaviour {
 
     }
 
-
-    //Defines if player can grab kid
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log("hit building");
-
-        if (other.gameObject.tag == "Building") {
-          
+    void GrabKid() {
+        //Kid grab
+        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
+            grabbedKid.SetActive(false);
+            Debug.Log("Got the kid");
         }
     }
+
+    void RepairWall() {
+
+    }
+
+
 
 }
