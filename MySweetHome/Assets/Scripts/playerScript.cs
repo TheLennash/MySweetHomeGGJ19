@@ -123,7 +123,7 @@ public class playerScript : MonoBehaviour
                 Destroy(grabbedKid[i]);
             }
 
-
+        animator.SetBool("HasChildrenInventory", grabbedKid.Any(x => x != null));
         }
     }
 }
