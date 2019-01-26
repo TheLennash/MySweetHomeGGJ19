@@ -19,6 +19,8 @@ public class KidScript : MonoBehaviour
 
     public float TopSpeed = 5;
 
+    public Transform Hairlocation;
+
     public float Speed
     {
         get
@@ -36,13 +38,14 @@ public class KidScript : MonoBehaviour
     public GameObject Belly;
 
 
-    public void Initialize(HouseBehaviour _house)
+    public void Initialize(HouseBehaviour _house, string Prefrence, GameObject hair)
     {
-        var types = Assembly.GetAssembly(typeof(Candy)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Candy))).ToList();
-        var random = Random.Range(0, types.Count());
 
-        CandyPrefrence = types[random].ToString();
         //Debug.Log("I Love " + CandyPrefrence);
+
+        CandyPrefrence = Prefrence;
+
+        //var hairObj = GameObject.Instantiate(hair, Vector3.zero, Quaternion.identity, Hairlocation);
 
         House = _house;
         GoGetCandy();
@@ -69,15 +72,16 @@ public class KidScript : MonoBehaviour
     {
         // go to location in circle of house;
         var GoTo = (Random.insideUnitCircle * GameSize);
+        var destination = new Vector3(GoTo.x, 0, GoTo.y);
 
-        if (!this.GetComponent<NavMeshAgent>().SetDestination(GoTo))
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(destination))
         {
             GoEatCandy();
             return;
         }
 
         //this checks if youve reached the pos;
-        StartCoroutine(GoToPosition(GoTo));
+        StartCoroutine(GoToPosition(destination));
 
 
     }
