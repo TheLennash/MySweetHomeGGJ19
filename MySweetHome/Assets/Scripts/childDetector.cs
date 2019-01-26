@@ -17,13 +17,12 @@ public class childDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         //grabbing
         if (other.gameObject.tag == "Kid")
         {
-            currentKid = other.gameObject;
 
-            if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null)
+            currentKid = other.gameObject;
+            if (ps.grabbedKid.Any(x => x == null))
             {
                 //ps.canGrab = true;
                 Debug.Log("Got the kid");

@@ -38,7 +38,8 @@ public class playerScript : MonoBehaviour
     {
         transform.rotation = Rotation.rotation;
         PlayerMovement();
-        GrabKid();
+        if (Input.GetKeyDown(KeyCode.Q))
+            GrabKid();
     }
 
 
@@ -49,11 +50,10 @@ public class playerScript : MonoBehaviour
         var vertical = Input.GetAxis("Vertical");
 
         var moveDir = new Vector3(-horizontal, 0, -vertical);
-        Debug.Log(moveDir);
 
         transform.Translate(moveDir * Time.deltaTime * speed);
 
-        if (moveDir.x != 0 || moveDir.y != 0)
+        if (moveDir.x != 0 || moveDir.z != 0)
         {
             Quaternion WantedRotation = Quaternion.LookRotation(moveDir);
             child.transform.localRotation = Quaternion.Slerp(child.transform.localRotation, WantedRotation, Time.deltaTime * 5);
@@ -62,34 +62,34 @@ public class playerScript : MonoBehaviour
 
     void GrabKid()
     {
-        //Kid grab
+        //Debug.Log("GGRABBING@");
+        //inv full
+        if (!grabbedKid.Any(x => x == null))
+            return;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        //no kid
+        if (cd.currentKid == null)
+            return;
+
+        //you already have this kid.
+        if (grabbedKid.ToList().Contains(cd.currentKid))
+            return;
+
+
+        for (int i = 0; i < grabbedKid.Length; i++)
         {
-            //inv full
-            if (!grabbedKid.Any(x => x == null))
-                return;
-
-            //no kid
-            if (cd.currentKid == null)
-                return;
-
-            //you already have this kid.
-            if (grabbedKid.ToList().Contains(cd.currentKid))
-                return;
-
-
-            for (int i = 0; i < grabbedKid.Length; i++)
+            var invspace = grabbedKid[i];
+            if (invspace == null)
             {
-                var invspace = grabbedKid[i];
-                if (invspace == null)
-                    grabbedKid[i] = cd.currentKid;
+                grabbedKid[i] = cd.currentKid;
+                break;
             }
-
-            cd.currentKid.SetActive(false);
-            cd.currentKid = null;
-
         }
+
+        cd.currentKid.SetActive(false);
+        cd.currentKid = null;
+
+
     }
 
     void RepairWall()

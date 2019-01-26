@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
@@ -64,25 +65,34 @@ public class KidScript : MonoBehaviour
         var GoTo = Random.insideUnitCircle.normalized * GameSize;
         this.GetComponent<NavMeshAgent>().SetDestination(GoTo);
 
+        StartCoroutine(GoToPosition(GoTo));
         // eat candy
 
 
         // get fatter
+
+
         // go get candy
     }
 
-    //IEnumerator GoToPosition(Transform Position)
-    //{
-    //    while (true)
-    //    {
-    //        if (Vector3.SqrMagnitude(trans.position - transform.position) < (radius * radius))
-    //            yield return new WaitForEndOfFrame();
-    //    }
-    //}
+    IEnumerator GoToPosition(Vector3 pos)
+    {
+        var r = 2;
+        while (Vector3.SqrMagnitude(pos - transform.position) > (r * r))
+        {
+
+
+
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        Debug.Log("Found a position");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGERD " + other.tag);
+        //Debug.Log("TRIGGERD " + other.tag);
         if (other.CompareTag("Building"))
         {
             var wall = other.GetComponent<WallBehaviour>();
