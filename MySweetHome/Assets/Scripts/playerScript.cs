@@ -118,12 +118,16 @@ public class playerScript : MonoBehaviour
 
     void PutKidInFurnace() {
         if (canMelt) {
-            for (int i = 0; i < grabbedKid.Length; i++) {
-                fs.kidList.Add(grabbedKid[i]);
-                Destroy(grabbedKid[i]);
+            for (int i = 0; i < grabbedKid.Length; i++)
+            {
+
+                if (grabbedKid[i] != null)
+                {
+                    fs.kidList.Add(grabbedKid[i]);
+                    Destroy(grabbedKid[i]);
+                }
             }
 
-        animator.SetBool("HasChildrenInventory", grabbedKid.Any(x => x != null));
         }
     }
 }
