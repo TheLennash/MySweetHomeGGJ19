@@ -17,9 +17,9 @@ public class childDetector : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Kid") {
-            Debug.Log("grabbable");
-            Debug.Log(ps.grabbedKid[0]);
-            Debug.Log(ps.grabbedKid[1]);
+            //Debug.Log("grabbable");
+            //Debug.Log(ps.grabbedKid[0]);
+            //Debug.Log(ps.grabbedKid[1]);
             currentKid = other.gameObject;
             if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null) {
                 ps.canGrab = true;
