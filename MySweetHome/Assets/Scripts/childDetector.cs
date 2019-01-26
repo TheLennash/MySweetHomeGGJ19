@@ -47,8 +47,13 @@ public class childDetector : MonoBehaviour
             }
         }
 
+        //melting
         if(other.gameObject.tag == "Oven") {
             ps.canMelt = true;
+
+        }
+
+        if(other.gameObject.tag == "Candycane") {
 
         }
     }
