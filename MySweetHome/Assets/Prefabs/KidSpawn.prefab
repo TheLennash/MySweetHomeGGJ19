@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98695392103c0d4a89968f53939af94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  House: {fileID: 0}
   KidPrefab: {fileID: 6043198446543055056, guid: a554fa52eeb44a5458c07bc32132e203,
     type: 3}
   SpawnRate: 5
