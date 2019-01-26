@@ -5124,7 +5124,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1335
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -5132,7 +5132,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: f4098d1a9799b414faf657dbc131c541, type: 2}
 --- !u!1 &1441626403
@@ -5238,6 +5238,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4952553529707304262, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952553529707304262, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4952553529707304257, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
       propertyPath: grabbedKid.Array.size
@@ -5251,7 +5261,7 @@ PrefabInstance:
     - target: {fileID: 4952553529707304258, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.4
       objectReference: {fileID: 0}
     - target: {fileID: 4952553529707304258, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
@@ -5261,7 +5271,7 @@ PrefabInstance:
     - target: {fileID: 4952553529707304258, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.46
+      value: -14.4
       objectReference: {fileID: 0}
     - target: {fileID: 4952553529707304258, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
@@ -5302,6 +5312,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 113733858, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661623098, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5796858598613713028, guid: 1d25bf44dfd98014bbbc2c9bc71be5b9,
         type: 3}
@@ -7710,6 +7728,8 @@ MonoBehaviour:
   Gyro: {fileID: 163741155}
   Target: {fileID: 2032823556}
   smoothing: 4
+  CamHeight: 8
+  DistanceFormPlayer: 10
 --- !u!4 &1928796745
 Transform:
   m_ObjectHideFlags: 0

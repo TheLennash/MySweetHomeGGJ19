@@ -61,8 +61,7 @@ public class KidScript : MonoBehaviour
     public void GoEatCandy()
     {
         // go to location in circle of house;
-        var GoTo = Random.insideUnitCircle * GameSize;
-        //this.transform.position = s;
+        var GoTo = Random.insideUnitCircle.normalized * GameSize;
         this.GetComponent<NavMeshAgent>().SetDestination(GoTo);
 
         // eat candy
