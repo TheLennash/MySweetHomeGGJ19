@@ -11,7 +11,6 @@ public class KidSpawn : MonoBehaviour
 
     List<KidScript> Kids = new List<KidScript>();
 
-
     // Start is called before the first frame update
     void Start()
     {
