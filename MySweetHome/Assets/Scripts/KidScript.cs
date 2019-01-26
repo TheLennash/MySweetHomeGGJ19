@@ -12,9 +12,13 @@ public class KidScript : MonoBehaviour
 
     public HouseBehaviour House;
 
+    //candy;s in hand
     public int CandyCount;
 
-    public float Fatness = 1;
+    private float Fatness = 1;
+
+    public float TopSpeed = 5;
+
     public float Speed
     {
         get
@@ -38,7 +42,7 @@ public class KidScript : MonoBehaviour
         var random = Random.Range(0, types.Count());
 
         CandyPrefrence = types[random].ToString();
-        Debug.Log("I Love " + CandyPrefrence);
+        //Debug.Log("I Love " + CandyPrefrence);
 
         House = _house;
         GoGetCandy();
@@ -49,45 +53,62 @@ public class KidScript : MonoBehaviour
     {
         //go to a wall;
         var targetWall = House.GetTargetWall(this);// House.Walls.OrderBy(x => x.GetCandies(CandyPrefrence)).Select(x => x).ToArray()[0];
-        this.GetComponent<NavMeshAgent>().SetDestination(targetWall.transform.position);
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(targetWall.transform.position))
+        {
+            GoGetCandy();
+            return;
+        }
 
-        //grab candy;
 
 
-
-        //go eat candy
-
+        // go eat candy
+        // happends in trigger
     }
 
     public void GoEatCandy()
     {
         // go to location in circle of house;
         var GoTo = Random.insideUnitCircle.normalized * GameSize;
-        this.GetComponent<NavMeshAgent>().SetDestination(GoTo);
 
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(GoTo))
+        {
+            GoEatCandy();
+            return;
+        }
+
+        //this checks if youve reached the pos;
         StartCoroutine(GoToPosition(GoTo));
-        // eat candy
 
 
-        // get fatter
-
-
-        // go get candy
     }
 
     IEnumerator GoToPosition(Vector3 pos)
     {
-        var r = 2;
+        Debug.Log("waiting for position");
+
+        //wait until position is reached (or is close)
+        var r = 10;
         while (Vector3.SqrMagnitude(pos - transform.position) > (r * r))
         {
-
-
-
-
-            yield return new WaitForEndOfFrame();
+            //check this once per second
+            yield return new WaitForSeconds(1f);
         }
 
         Debug.Log("Found a position");
+
+        // eat candy
+        foreach (var a in animators)
+        {
+            a.SetTrigger("EatCandy");
+        }
+
+        // get fatter
+        Fatness++;
+        Speed = TopSpeed / Fatness;
+        CandyCount = 0;
+
+        // go get candy
+        GoGetCandy();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -101,6 +122,11 @@ public class KidScript : MonoBehaviour
                 if (wall.TakeCandies(CandyPrefrence))
                 {
                     Debug.Log("Take Candy");
+                    //grab candy;
+                    foreach (var a in animators)
+                    {
+                        a.SetTrigger("EatCandy");
+                    }
 
                     CandyCount++;
 

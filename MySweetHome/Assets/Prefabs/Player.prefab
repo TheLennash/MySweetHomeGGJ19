@@ -116,7 +116,7 @@ MonoBehaviour:
   cd: {fileID: 3046107223825316828}
   currentWall: {fileID: 0}
   canRepair: 0
-  fs: {fileID: 0}
+  animator: {fileID: 2032823558}
 --- !u!54 &2032823561
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -53,8 +53,11 @@ MonoBehaviour:
   CandyPrefrence: 
   House: {fileID: 0}
   CandyCount: 0
-  Fatness: 1
-  animators: []
+  TopSpeed: 5
+  animators:
+  - {fileID: 3433333810159561161}
+  - {fileID: 52078118102741820}
+  - {fileID: 7872064836908063114}
   Belly: {fileID: 0}
 --- !u!195 &2713386025688418754
 NavMeshAgent:
@@ -191,6 +194,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 52078118110053980}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &52078118102741820 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291,
+    type: 3}
+  m_PrefabInstance: {fileID: 52078118110053980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3433333810152266921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -259,6 +268,12 @@ PrefabInstance:
 --- !u!4 &3433333810151867941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: 7474caf49467e2c4a8800b6efd68d291,
+    type: 3}
+  m_PrefabInstance: {fileID: 3433333810152266921}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3433333810159561161 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291,
     type: 3}
   m_PrefabInstance: {fileID: 3433333810152266921}
   m_PrefabAsset: {fileID: 0}
@@ -362,6 +377,12 @@ PrefabInstance:
 --- !u!4 &7872064836898223718 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400012, guid: 0578460c08fbde2438e043121cf3e932,
+    type: 3}
+  m_PrefabInstance: {fileID: 7872064836898614506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7872064836908063114 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 0578460c08fbde2438e043121cf3e932,
     type: 3}
   m_PrefabInstance: {fileID: 7872064836898614506}
   m_PrefabAsset: {fileID: 0}

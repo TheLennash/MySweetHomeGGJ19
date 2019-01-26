@@ -22,18 +22,16 @@ public class childDetector : MonoBehaviour
         {
 
             currentKid = other.gameObject;
-            if (ps.grabbedKid.Any(x => x == null))
-            {
-                //ps.canGrab = true;
-                Debug.Log("Got the kid");
-
-                //ps.grabbedKid[0] = other.gameObject;
-
-                //other.gameObject.SetActive(false);
-                //ps.grabbedKid[1] = other.gameObject;
-            }
-
+            //if (ps.grabbedKid.Any(x => x == null))
+            //{
+            //    //ps.canGrab = true;
+            //    //Debug.Log("Got the kid");
+            //    //ps.grabbedKid[0] = other.gameObject;
+            //    //other.gameObject.SetActive(false);
+            //    //ps.grabbedKid[1] = other.gameObject;
+            //}
         }
+
         //repairing
         if (other.gameObject.tag == "Building")
         {
