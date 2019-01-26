@@ -12,7 +12,7 @@ public class playerScript : MonoBehaviour {
     public bool canGrab;
     public GameObject[] grabbedKid = new GameObject[2];
 
-
+    public childDetector cd;
     public WallBehaviour currentWall;
     public bool canRepair;
 
@@ -28,7 +28,7 @@ public class playerScript : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        cd = GetComponentInChildren<childDetector>();
     }
 
     // Update is called once per frame
@@ -87,23 +87,31 @@ public class playerScript : MonoBehaviour {
         //Kid grab
 
         if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
-            foreach (var kid in grabbedKid) {
-                kid.SetActive(false);
-                Debug.Log("Got the kid");
+            cd.currentKid.SetActive(false);
+            if (grabbedKid[0] == null) {
+
+                grabbedKid[0] = cd.currentKid;
+            } else {
+                grabbedKid[1] = cd.currentKid;
             }
-            
+
+            //foreach (var kid in grabbedKid) {
+               // kid.SetActive(false);
+               // Debug.Log("Got the kid");
+            //}
+
         }
     }
 
     void RepairWall() {
-        if(canRepair == true && Input.GetKeyDown(KeyCode.E)) {
+        if (canRepair == true && Input.GetKeyDown(KeyCode.E)) {
 
             foreach (var candy in currentWall.Candies) {
                 if (Candies[candy.Key] > 0) {
                     currentWall.Candies[candy.Key] = candy.Value + 1;
                     Candies[candy.Key] = candy.Value - 1;
                 }
-                
+
 
             }
 

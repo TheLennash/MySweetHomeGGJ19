@@ -8,7 +8,8 @@ public class childDetector : MonoBehaviour {
     GameObject parent;
     WallBehaviour cw;
     playerScript ps;
-    public int[] counters;
+
+    public GameObject currentKid;
 
     private void Awake() {
         ps = GetComponentInParent<playerScript>();
@@ -19,12 +20,15 @@ public class childDetector : MonoBehaviour {
             Debug.Log("grabbable");
             Debug.Log(ps.grabbedKid[0]);
             Debug.Log(ps.grabbedKid[1]);
-            if (ps.grabbedKid[0] == null) {
+            currentKid = other.gameObject;
+            if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null) {
                 ps.canGrab = true;
-                ps.grabbedKid[0] = other.gameObject;
-            } else if (ps.grabbedKid[1] == null) {
-                ps.canGrab = true;
-                ps.grabbedKid[1] = other.gameObject;
+                Debug.Log("Got the kid");
+
+                //ps.grabbedKid[0] = other.gameObject;
+
+                //other.gameObject.SetActive(false);
+                //ps.grabbedKid[1] = other.gameObject;
             }
 
         }
