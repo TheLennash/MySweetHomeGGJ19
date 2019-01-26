@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class playerScript : MonoBehaviour {
+public class playerScript : MonoBehaviour
+{
 
     public Transform Rotation;
     public Transform child;
@@ -27,12 +27,14 @@ public class playerScript : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         cd = GetComponentInChildren<childDetector>();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         transform.rotation = Rotation.rotation;
         PlayerMovement();
         GrabKid();
@@ -40,7 +42,8 @@ public class playerScript : MonoBehaviour {
     }
 
 
-    void PlayerMovement() {
+    void PlayerMovement()
+    {
 
         //Defines player movement direction
         var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -62,63 +65,70 @@ public class playerScript : MonoBehaviour {
 
         //Rotate child
         //Rotate left
-        if (horizontal < 0) {
+        if (horizontal < 0)
+        {
             child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y + 90, -vertical);
         }
 
         //Rotate right
-        if (horizontal > 0) {
+        if (horizontal > 0)
+        {
             child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y - 90, -vertical);
         }
 
         //Rotate forward
-        if (vertical < 0) {
+        if (vertical < 0)
+        {
             child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y, -vertical);
         }
 
-        if (vertical > 0) {
+        if (vertical > 0)
+        {
             child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y + 180, -vertical);
         }
 
 
     }
 
-    void GrabKid() {
+    void GrabKid()
+    {
         //Kid grab
 
-        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
+        if (Input.GetKeyDown(KeyCode.Q) && canGrab == true)
+        {
             cd.currentKid.SetActive(false);
-            if (grabbedKid[0] == null) {
+            if (grabbedKid[0] == null)
+            {
 
                 grabbedKid[0] = cd.currentKid;
-            } else {
+            }
+            else
+            {
                 grabbedKid[1] = cd.currentKid;
             }
 
             //foreach (var kid in grabbedKid) {
-               // kid.SetActive(false);
-               // Debug.Log("Got the kid");
+            // kid.SetActive(false);
+            // Debug.Log("Got the kid");
             //}
 
         }
     }
 
-    void RepairWall() {
-        if (canRepair == true && Input.GetKeyDown(KeyCode.E)) {
+    void RepairWall()
+    {
+        if (canRepair == true && Input.GetKeyDown(KeyCode.E))
+        {
 
-            foreach (var candy in currentWall.Candies) {
-                if (Candies[candy.Key] > 0) {
+            foreach (var candy in currentWall.Candies)
+            {
+                if (Candies[candy.Key] > 0)
+                {
                     currentWall.Candies[candy.Key] = candy.Value + 1;
                     Candies[candy.Key] = candy.Value - 1;
                 }
-
-
             }
-
         }
-
     }
-
-
 
 }
