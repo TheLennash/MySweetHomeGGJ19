@@ -726,10 +726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1445d060260deb449afcc740f31c5c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cookies: 12
-  Marshmellow: 12
-  Chocolate: 12
-  CandyCane: 12
+  CookiesCount: 12
+  MarshmellowCount: 12
+  ChocolateCount: 12
+  CandyCaneCount: 12
 --- !u!65 &1066475244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -848,10 +848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1445d060260deb449afcc740f31c5c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cookies: 12
-  Marshmellow: 12
-  Chocolate: 12
-  CandyCane: 12
+  CookiesCount: 12
+  MarshmellowCount: 12
+  ChocolateCount: 12
+  CandyCaneCount: 12
 --- !u!65 &1154197143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1377,10 +1377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1445d060260deb449afcc740f31c5c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cookies: 12
-  Marshmellow: 12
-  Chocolate: 12
-  CandyCane: 12
+  CookiesCount: 12
+  MarshmellowCount: 12
+  ChocolateCount: 12
+  CandyCaneCount: 12
 --- !u!65 &1679461160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1451,6 +1451,7 @@ GameObject:
   - component: {fileID: 1756508777}
   - component: {fileID: 1756508776}
   - component: {fileID: 1756508775}
+  - component: {fileID: 1756508779}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -1533,6 +1534,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756508779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756508774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e354b84a7a6718446b5dd94dea0dc6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Walls:
+  - {fileID: 1679461159}
+  - {fileID: 1154197142}
+  - {fileID: 1066475243}
 --- !u!1 &1926839728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,8 +1872,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715422868130801285, guid: 2123e87afb4e7294c90024a9190c7f80,
         type: 3}
-      propertyPath: player
+      propertyPath: House
       value: 
-      objectReference: {fileID: 2032823556}
+      objectReference: {fileID: 1756508779}
+    - target: {fileID: 4715422868130801285, guid: 2123e87afb4e7294c90024a9190c7f80,
+        type: 3}
+      propertyPath: SpawnRate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2123e87afb4e7294c90024a9190c7f80, type: 3}
