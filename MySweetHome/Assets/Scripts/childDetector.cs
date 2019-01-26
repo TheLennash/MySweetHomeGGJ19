@@ -17,24 +17,21 @@ public class childDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         //grabbing
         if (other.gameObject.tag == "Kid")
         {
+
             currentKid = other.gameObject;
-
-            if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null)
-            {
-                //ps.canGrab = true;
-                Debug.Log("Got the kid");
-
-                //ps.grabbedKid[0] = other.gameObject;
-
-                //other.gameObject.SetActive(false);
-                //ps.grabbedKid[1] = other.gameObject;
-            }
-
+            //if (ps.grabbedKid.Any(x => x == null))
+            //{
+            //    //ps.canGrab = true;
+            //    //Debug.Log("Got the kid");
+            //    //ps.grabbedKid[0] = other.gameObject;
+            //    //other.gameObject.SetActive(false);
+            //    //ps.grabbedKid[1] = other.gameObject;
+            //}
         }
+
         //repairing
         if (other.gameObject.tag == "Building")
         {
@@ -49,6 +46,11 @@ public class childDetector : MonoBehaviour
                 ps.currentWall = cw;
             }
         }
+
+        if(other.gameObject.tag == "Oven") {
+            ps.canMelt = true;
+
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -60,6 +62,9 @@ public class childDetector : MonoBehaviour
         if (other.gameObject.tag == "Building")
         {
             cw = null;
+        }
+        if (other.gameObject.tag == "Oven") {
+            ps.canMelt = false;
         }
     }
 
