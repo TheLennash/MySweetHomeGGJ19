@@ -15,7 +15,7 @@ public class WallBehaviour : MonoBehaviour
     {
         foreach (var candy in Candies)
         {
-            candy.
+            //candy.
         }
     }
 
