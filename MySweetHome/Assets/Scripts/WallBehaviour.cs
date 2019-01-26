@@ -9,6 +9,17 @@ public class WallBehaviour : MonoBehaviour
     //public int ChocolateCount;
     //public int CandyCaneCount;
 
+    public int StartSizeCandy;
+
+    public void Start()
+    {
+        foreach (var candy in Candies)
+        {
+            candy.
+        }
+    }
+
+
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
         { nameof(Cookie) , 0 },
         { nameof(Marshmellow) , 0 },
@@ -32,10 +43,6 @@ public class WallBehaviour : MonoBehaviour
     }
 
 
-    public void Start()
-    {
-
-    }
 
 
 }

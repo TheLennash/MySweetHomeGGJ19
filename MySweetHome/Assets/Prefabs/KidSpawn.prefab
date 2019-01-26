@@ -171,7 +171,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98695392103c0d4a89968f53939af94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnLocations: []
+  SpawnLocations:
+  - {fileID: 9154067505723839988}
+  - {fileID: 7375515848933180316}
+  - {fileID: 2416168569315058380}
+  - {fileID: 3710760460654066395}
+  - {fileID: 8530795485502249534}
+  - {fileID: 5067619368870355433}
+  - {fileID: 8133516123761282382}
+  - {fileID: 8045724538879973649}
   House: {fileID: 0}
   KidPrefab: {fileID: 6043198446543055056, guid: a554fa52eeb44a5458c07bc32132e203,
     type: 3}
