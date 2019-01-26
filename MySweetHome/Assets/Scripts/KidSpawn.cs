@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class KidSpawn : MonoBehaviour
 {
+
+    public HouseBehaviour House;
+
     public KidScript KidPrefab;
 
     public float SpawnRate = 5f;
@@ -32,7 +35,7 @@ public class KidSpawn : MonoBehaviour
     {
         Debug.Log("SpawnKid " + Kids.Count);
         var kid = GameObject.Instantiate<KidScript>(KidPrefab, this.transform.position, Quaternion.identity, transform);
-        kid.Initialize();
+        kid.Initialize(House);
         Kids.Add(kid);
 
     }
