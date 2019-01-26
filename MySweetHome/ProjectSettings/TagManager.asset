@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Kid
+  - Building
   layers:
   - Default
   - TransparentFX
