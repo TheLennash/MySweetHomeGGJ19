@@ -17,6 +17,8 @@ public class playerScript : MonoBehaviour
     public WallBehaviour currentWall;
     public bool canRepair;
 
+    public Animator animator;
+
 
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
         { nameof(Cookie) , 0 },
@@ -62,6 +64,7 @@ public class playerScript : MonoBehaviour
 
     void GrabKid()
     {
+        animator.SetTrigger("GrabChildren");
         //Debug.Log("GGRABBING@");
         //inv full
         if (!grabbedKid.Any(x => x == null))
@@ -89,7 +92,8 @@ public class playerScript : MonoBehaviour
         cd.currentKid.SetActive(false);
         cd.currentKid = null;
 
-
+        //Debug.Log("hasChildrenInventory " +  grabbedKid.Any(x => x != null))
+        animator.SetBool("HasChildrenInventory", grabbedKid.Any(x => x != null));
     }
 
     void RepairWall()
