@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 72308001973424517}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Kid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4c2d1e7ce2434ea12f4b75a008ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CandyPrefrence: 
   House: {fileID: 0}
   Candy: {fileID: 0}
   Fatness: 0
