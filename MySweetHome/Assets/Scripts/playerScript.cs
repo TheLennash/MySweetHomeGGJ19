@@ -8,6 +8,7 @@ public class playerScript : MonoBehaviour {
     public Transform child;
 
     public float speed;
+    float vertAngle;
 
     public bool canGrab;
     public GameObject[] grabbedKid = new GameObject[2];
@@ -43,44 +44,64 @@ public class playerScript : MonoBehaviour {
     void PlayerMovement() {
 
         //Defines player movement direction
-        var horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        var vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        var horizontal = Input.GetAxis("Horizontal");// * speed * Time.deltaTime;
+        var vertical = Input.GetAxis("Vertical");// * speed * Time.deltaTime;
 
 
         var moveDir = new Vector3(-horizontal, 0, -vertical);
+        Debug.Log(moveDir);
 
-        var angle = Vector3.Angle(moveDir, transform.forward); //
+        //var angle = Vector3.Angle(moveDir, transform.forward); //
 
 
 
-        transform.Translate(moveDir);
+        transform.Translate(moveDir * Time.deltaTime * speed);
 
 
 
         //child.transform.eulerAngles =  new Vector3(0,angle, 0);
+        ////LEFT
+        //Vector3 rotateLeft = new Vector3(-horizontal, transform.rotation.y + 90, -vertical);
+        ////RIGHT
+        //Vector3 rotateRight = new Vector3(-horizontal, transform.rotation.y - 90, -vertical);
+        ////FORWARD
+        //Vector3 rotateForward = new Vector3(-horizontal, transform.rotation.y, -vertical);
+        ////BACKWARD
+        //Vector3 rotateBackward = new Vector3(-horizontal, transform.rotation.y + 180, -vertical);
 
+        Quaternion WantedRotation = Quaternion.identity;
+        if (vertical < 0) {
+            vertAngle = 0;
+        } else {
+            vertAngle = -vertical * 180;
+        }
+        //WantedRotation = Quaternion.Euler(new Vector3(0, (90 * -horizontal) + (vertAngle), 0));
+        WantedRotation = Quaternion.Euler(new Vector3(0, (180-(horizontal * 90)) + (90-(vertical * 90)), 0));
 
+        //float angle = Mathf.LerpAngle(transform.rotation.y, transform.rotation.y + 90, Time.deltaTime * 0.1f);
         //Rotate child
         //Rotate left
-        if (horizontal < 0) {
-            child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y + 90, -vertical);
-        }
+        //if (horizontal < 0) {
+        //    //WantedRotation = Quaternion.Euler(new Vector3(-horizontal, transform.rotation.y + 90 , -vertical));
+        //    WantedRotation = Quaternion.Euler(new Vector3(-horizontal, transform.rotation.y + (90 * horizontal) , -vertical));
+        //}
 
-        //Rotate right
-        if (horizontal > 0) {
-            child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y - 90, -vertical);
-        }
+        ////Rotate right
+        //if (horizontal > 0) {
+        //    WantedRotation = Quaternion.Euler(new Vector3(-horizontal, transform.rotation.y - 90, -vertical));
+        //}
 
-        //Rotate forward
-        if (vertical < 0) {
-            child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y, -vertical);
-        }
+        ////Rotate forward
+        //if (vertical < 0) {
+        //    WantedRotation = Quaternion.Euler(new Vector3(-horizontal, transform.rotation.y, -vertical));
+        //}
 
-        if (vertical > 0) {
-            child.transform.localEulerAngles = new Vector3(-horizontal, transform.rotation.y + 180, -vertical);
-        }
+        //if (vertical > 0) {
+        //    WantedRotation = Quaternion.Euler(new Vector3(-horizontal, transform.rotation.y + 180, -vertical));
+        //}
 
-
+        child.transform.localRotation = Quaternion.Slerp(child.transform.localRotation, WantedRotation, Time.deltaTime * 5);
+        //child.transform.localRotation = WantedRotation;
     }
 
     void GrabKid() {
