@@ -123,7 +123,8 @@ public class playerScript : MonoBehaviour
 
                 if (grabbedKid[i] != null)
                 {
-                    fs.kidList.Add(grabbedKid[i]);
+                    KidScript ks = grabbedKid[i].GetComponent<KidScript>();
+                    fs.kidList.Add(ks.CandyPrefrence);
                     Destroy(grabbedKid[i]);
                 }
             }
