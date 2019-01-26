@@ -9,13 +9,12 @@ public class CameraController : MonoBehaviour
     public GameObject Target;
 
     private GameObject Cam;
-
-
     private Vector3 DeltaPos;
 
-
     public float smoothing = 4f;
-
+    public float CamHeight = 8f;
+    public float DistanceFormPlayer = 10;
+    
     private void Start()
     {
         Cam = Camera.main.gameObject;
@@ -34,7 +33,7 @@ public class CameraController : MonoBehaviour
 
         var dist = Vector3.Distance(Gyro.position, Target.transform.position);
         Cam.transform.LookAt(Target.transform);
-        Cam.transform.localPosition = Vector3.Lerp(DeltaPos, new Vector3(0, 8, dist + 10), Time.deltaTime * smoothing);
+        Cam.transform.localPosition = Vector3.Lerp(DeltaPos, new Vector3(0, CamHeight, dist + DistanceFormPlayer), Time.deltaTime * smoothing);
         DeltaPos = Cam.transform.localPosition;
 
         Gyro.LookAt(Target.transform);

@@ -1,22 +1,35 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class KidScript : MonoBehaviour
 {
+    public float GameSize;
+
     public string CandyPrefrence;
-
-
-
 
     public HouseBehaviour House;
 
-    public GameObject Candy;
+    public int CandyCount;
 
-    public float Fatness;
-    public float speed;
+    public float Fatness = 1;
+    public float Speed
+    {
+        get
+        {
+            return this.GetComponent<NavMeshAgent>().speed;
+        }
+        set
+        {
+            this.GetComponent<NavMeshAgent>().speed = value;
+        }
+    }
+
+    public Animator[] animators = new Animator[0];
+
+    public GameObject Belly;
+
 
     public void Initialize(HouseBehaviour _house)
     {
@@ -38,6 +51,9 @@ public class KidScript : MonoBehaviour
         this.GetComponent<NavMeshAgent>().SetDestination(targetWall.transform.position);
 
         //grab candy;
+
+
+
         //go eat candy
 
     }
@@ -45,36 +61,51 @@ public class KidScript : MonoBehaviour
     public void GoEatCandy()
     {
         // go to location in circle of house;
+        var GoTo = Random.insideUnitCircle * GameSize;
+        //this.transform.position = s;
+        this.GetComponent<NavMeshAgent>().SetDestination(GoTo);
+
         // eat candy
+
+
         // get fatter
         // go get candy
     }
 
-    IEnumerator GoToPosition(Transform Position)
-    {
-        while (true)
-        {
-
-
-            yield return new WaitForEndOfFrame();
-        }
-    }
+    //IEnumerator GoToPosition(Transform Position)
+    //{
+    //    while (true)
+    //    {
+    //        if (Vector3.SqrMagnitude(trans.position - transform.position) < (radius * radius))
+    //            yield return new WaitForEndOfFrame();
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGERD");
-
-        var wall = other.GetComponent<WallBehaviour>();
-        if (wall != null)
+        Debug.Log("TRIGGERD " + other.tag);
+        if (other.CompareTag("Building"))
         {
-            Debug.Log("Take Candy");
-            if (!wall.TakeCandies(CandyPrefrence))
+            var wall = other.GetComponent<WallBehaviour>();
+            if (wall != null)
             {
-                //could not take candy.
-                // try again
+                if (wall.TakeCandies(CandyPrefrence))
+                {
+                    Debug.Log("Take Candy");
+
+                    CandyCount++;
+
+                    GoEatCandy();
+                }
+                else
+                {
+                    // try again
+                    //could not take candy.
+                    Debug.Log("could not take candy");
+                    GoGetCandy();
+                }
             }
         }
-
         //Destroy(this.gameObject);
     }
 
