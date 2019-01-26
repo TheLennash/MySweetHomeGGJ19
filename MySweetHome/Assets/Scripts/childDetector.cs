@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
-using System.Linq;
 
-public class childDetector : MonoBehaviour {
+public class childDetector : MonoBehaviour
+{
 
     GameObject parent;
     WallBehaviour cw;
@@ -11,18 +10,22 @@ public class childDetector : MonoBehaviour {
 
     public GameObject currentKid;
 
-    private void Awake() {
+    private void Awake()
+    {
         ps = GetComponentInParent<playerScript>();
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Kid") {
-            //Debug.Log("grabbable");
-            //Debug.Log(ps.grabbedKid[0]);
-            //Debug.Log(ps.grabbedKid[1]);
+    private void OnTriggerEnter(Collider other)
+    {
+
+        //grabbing
+        if (other.gameObject.tag == "Kid")
+        {
             currentKid = other.gameObject;
-            if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null) {
-                ps.canGrab = true;
+
+            if (ps.grabbedKid[0] == null || ps.grabbedKid[1] == null)
+            {
+                //ps.canGrab = true;
                 Debug.Log("Got the kid");
 
                 //ps.grabbedKid[0] = other.gameObject;
@@ -32,37 +35,31 @@ public class childDetector : MonoBehaviour {
             }
 
         }
-
-        if (other.gameObject.tag == "Building") {
+        //repairing
+        if (other.gameObject.tag == "Building")
+        {
             other.gameObject.GetComponent<WallBehaviour>();
             cw = other.gameObject.GetComponent<WallBehaviour>();
 
-
             bool canRepair = cw.Candies.Any(x => x.Value < 12);
-            if (canRepair) {
+            if (canRepair)
+            {
                 Debug.Log("you can repair this wall");
                 ps.canRepair = true;
                 ps.currentWall = cw;
             }
-
-            //if (cw.Candies[candyType] < 12) {
-            //    int[] counters = new int[4] {cw.CookiesCount, cw.ChocolateCount, cw.CandyCaneCount, cw.MarshmellowCount };
-            //    ps.wallCounter = counters;
-            //    ps.currentWall = cw;
-            //    ps.canRepair = true;
-            //}
-
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == "Kid") {
-            ps.canGrab = false;
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Kid")
+        {
+            currentKid = null;
         }
-        if (other.gameObject.tag == "Building") {
+        if (other.gameObject.tag == "Building")
+        {
             cw = null;
-
         }
     }
 

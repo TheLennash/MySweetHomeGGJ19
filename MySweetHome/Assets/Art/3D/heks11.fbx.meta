@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: cb79908f4dcc1ce44ba36f4873169fb8
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Anm_rig_Net_hendle
+    100002: Anm_rig_Net_leg
+    100004: Anm_rig_Net_leg (2)
+    100006: Anm_rig_Net_leg (3)
+    100008: Anm_rig_Net_leg (4)
+    100010: Anm_rig_Net_leg (5)
+    100012: Anm_rig_Net_leg (6)
+    100014: Arm_Anm_Child_BovenArm
+    100016: Arm_Anm_Child_BovenArm (2)
+    100018: Arm_Anm_Child_Elleboog
+    100020: Arm_Anm_Child_Elleboog (2)
+    100022: Arm_Anm_Child_end
+    100024: Arm_Anm_Child_end (2)
+    100026: Arm_Anm_Child_Pols
+    100028: Arm_Anm_Child_Pols (2)
+    100030: Arm_Anm_Child_Schouder (2)
+    100032: Arm_Anm_Child_Schouder (2) (2)
+    100034: Arm_Anm_Child_sleutelbeen
+    100036: Arm_Anm_Child_sleutelbeen (2)
+    100038: arm_links
+    100040: arm_rechts
+    100042: BASE
+    100044: body
+    100046: Body_Anm_Child_bottom
+    100048: Body_Anm_Child_Head
+    100050: Body_Anm_Child_nek
+    100052: Body_Anm_Child_schouder
+    100054: Child_ BASE
+    100056: head
+    100058: //RootNode
+    100060: Locator_CandyHold
+    100062: NET
+    100064: NET_LOC
+    100066: NUL_NET
+    100068: STOK
+    100070: Texture Group
+    400000: Anm_rig_Net_hendle
+    400002: Anm_rig_Net_leg
+    400004: Anm_rig_Net_leg (2)
+    400006: Anm_rig_Net_leg (3)
+    400008: Anm_rig_Net_leg (4)
+    400010: Anm_rig_Net_leg (5)
+    400012: Anm_rig_Net_leg (6)
+    400014: Arm_Anm_Child_BovenArm
+    400016: Arm_Anm_Child_BovenArm (2)
+    400018: Arm_Anm_Child_Elleboog
+    400020: Arm_Anm_Child_Elleboog (2)
+    400022: Arm_Anm_Child_end
+    400024: Arm_Anm_Child_end (2)
+    400026: Arm_Anm_Child_Pols
+    400028: Arm_Anm_Child_Pols (2)
+    400030: Arm_Anm_Child_Schouder (2)
+    400032: Arm_Anm_Child_Schouder (2) (2)
+    400034: Arm_Anm_Child_sleutelbeen
+    400036: Arm_Anm_Child_sleutelbeen (2)
+    400038: arm_links
+    400040: arm_rechts
+    400042: BASE
+    400044: body
+    400046: Body_Anm_Child_bottom
+    400048: Body_Anm_Child_Head
+    400050: Body_Anm_Child_nek
+    400052: Body_Anm_Child_schouder
+    400054: Child_ BASE
+    400056: head
+    400058: //RootNode
+    400060: Locator_CandyHold
+    400062: NET
+    400064: NET_LOC
+    400066: NUL_NET
+    400068: STOK
+    400070: Texture Group
+    2100000: heks
+    2300000: body
+    2300002: head
+    2300004: STOK
+    3300000: body
+    3300002: head
+    3300004: STOK
+    4300000: NET
+    4300002: arm_rechts
+    4300004: arm_links
+    4300006: STOK
+    4300008: body
+    4300010: head
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: arm_links
+    13700002: arm_rechts
+    13700004: NET
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
