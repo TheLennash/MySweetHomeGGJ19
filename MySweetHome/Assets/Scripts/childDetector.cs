@@ -35,7 +35,7 @@ public class childDetector : MonoBehaviour
         //repairing
         if (other.gameObject.tag == "Building")
         {
-            other.gameObject.GetComponent<WallBehaviour>();
+           
             cw = other.gameObject.GetComponent<WallBehaviour>();
 
             bool canRepair = cw.Candies.Any(x => x.Value < 12);
@@ -44,16 +44,14 @@ public class childDetector : MonoBehaviour
                 Debug.Log("you can repair this wall");
                 ps.canRepair = true;
                 ps.currentWall = cw;
+            }else if(canRepair == false) {
+                ps.canRepair = false;
             }
         }
 
         //melting
         if(other.gameObject.tag == "Oven") {
             ps.canMelt = true;
-
-        }
-
-        if(other.gameObject.tag == "Candycane") {
 
         }
     }
@@ -66,6 +64,7 @@ public class childDetector : MonoBehaviour
         }
         if (other.gameObject.tag == "Building")
         {
+            ps.canRepair = false;
             cw = null;
         }
         if (other.gameObject.tag == "Oven") {

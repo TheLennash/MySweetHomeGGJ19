@@ -9,7 +9,7 @@ public class furnaceScript : MonoBehaviour {
     public GameObject marshmallow;
     public GameObject candycane;
     public Transform candySpawnPoint;
-
+    int val;
     public float furnaceBurnTime = 1f;
 
 
@@ -54,30 +54,30 @@ public class furnaceScript : MonoBehaviour {
 
         //}
         foreach (KeyValuePair<string, int> candy in Candies) {
-            int val = candy.Value;
-            //Now you can access the key and value both separately from this attachStat as:
-            if (candy.Key == "Cookie") {
+            val = candy.Value;
+            
+            if (candy.Key == "Cookie" && val > 0) {
                 for (int i = 0; i < val; i++) {
                     Instantiate(cookie, candySpawnPoint.position, transform.rotation);
                     //Candies["Cookie"]--;
                 }
                 
             }
-            if (candy.Key == "Chocolate") {
+            if (candy.Key == "Chocolate" && val > 0) {
                 for (int i = 0; i < val; i++) {
                     Instantiate(chocolate, candySpawnPoint.position, transform.rotation);
                     //Candies["Marshmellow"]--;
                 }
                 
             }
-            if (candy.Key == "CandyCane") {
+            if (candy.Key == "CandyCane" && val > 0) {
                 for (int i = 0; i < val; i++) {
                     Instantiate(candycane, candySpawnPoint.position, transform.rotation);
                     //Candies["Chocolate"]--;
                 }
                 
             }
-            if (candy.Key == "Marshmellow") {
+            if (candy.Key == "Marshmellow" && val > 0) {
                 for (int i = 0; i < val; i++) {
                     Instantiate(marshmallow, candySpawnPoint.position, transform.rotation);
                     //Candies["CandyCane"]--;
@@ -90,10 +90,12 @@ public class furnaceScript : MonoBehaviour {
             //Debug.Log(candy.Value);
         }
         //empty the bag
+        val = 0;
         Candies["Cookies"] = 0;
         Candies["Chocolate"] = 0;
         Candies["CandyCane"] = 0;
         Candies["Marshmellow"] = 0;
+        
 
         Debug.Log("We done burning boys");
     }
