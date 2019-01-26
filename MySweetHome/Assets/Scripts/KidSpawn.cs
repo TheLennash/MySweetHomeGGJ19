@@ -4,6 +4,8 @@ using UnityEngine;
 public class KidSpawn : MonoBehaviour
 {
 
+    public List<Transform> SpawnLocations = new List<Transform>();
+
     public HouseBehaviour House;
 
     public KidScript KidPrefab;
@@ -12,14 +14,18 @@ public class KidSpawn : MonoBehaviour
 
     private float startTime;
 
-    List<KidScript> Kids = new List<KidScript>();
+    private int SpawnCount;
+
+    private int LastIndex = -1;
+
+
+    //List<KidScript> Kids = new List<KidScript>();
 
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
     }
-
 
     public void Update()
     {
@@ -28,15 +34,38 @@ public class KidSpawn : MonoBehaviour
             startTime = Time.time;
             SpawnKid();
         }
-
     }
+
 
     public void SpawnKid()
     {
-        Debug.Log("SpawnKid " + Kids.Count);
-        var kid = GameObject.Instantiate<KidScript>(KidPrefab, this.transform.position, Quaternion.identity, transform);
+        var spawnLoc = SpawnLocations[GetRandomSpawnIndex()];
+
+        Debug.Log("SpawnKid " + SpawnCount);
+        var kid = GameObject.Instantiate<KidScript>(KidPrefab, spawnLoc.position, Quaternion.identity, transform);
         kid.Initialize(House);
-        Kids.Add(kid);
+
+        SpawnCount++;
+        //Kids.Add(kid);
 
     }
+
+
+    public int GetRandomSpawnIndex()
+    {
+        var result = Random.Range(0, SpawnLocations.Count);
+        if (result == LastIndex)
+            result = GetRandomSpawnIndex();
+
+        LastIndex = result;
+        return result;
+    }
+
+
+
+
+
+
+
+
 }
