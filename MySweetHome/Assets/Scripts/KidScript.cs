@@ -75,7 +75,7 @@ public class KidScript : MonoBehaviour
             }
         }
 
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 
 

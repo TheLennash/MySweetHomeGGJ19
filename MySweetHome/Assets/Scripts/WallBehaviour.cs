@@ -10,10 +10,10 @@ public class WallBehaviour : MonoBehaviour
     //public int CandyCaneCount;
 
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
-        { nameof(Cookie) , 0 },
-        { nameof(Marshmellow) , 0 },
-        { nameof(Chocolate) , 0 },
-        { nameof(CandyCane) , 0 }
+        { nameof(Cookie) , 12 },
+        { nameof(Marshmellow) , 12 },
+        { nameof(Chocolate) , 12 },
+        { nameof(CandyCane) , 12 }
     };
 
     public int GetCandies(string candyType)

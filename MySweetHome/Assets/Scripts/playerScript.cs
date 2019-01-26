@@ -10,7 +10,7 @@ public class playerScript : MonoBehaviour {
     public float speed;
 
     public bool canGrab;
-    public GameObject grabbedKid;
+    public GameObject[] grabbedKid = new GameObject[2];
 
 
     public WallBehaviour currentWall;
@@ -85,13 +85,29 @@ public class playerScript : MonoBehaviour {
 
     void GrabKid() {
         //Kid grab
+
         if (Input.GetKeyDown(KeyCode.Q) && canGrab == true) {
-            grabbedKid.SetActive(false);
-            Debug.Log("Got the kid");
+            foreach (var kid in grabbedKid) {
+                kid.SetActive(false);
+                Debug.Log("Got the kid");
+            }
+            
         }
     }
 
     void RepairWall() {
+        if(canRepair == true && Input.GetKeyDown(KeyCode.E)) {
+
+            foreach (var candy in currentWall.Candies) {
+                if (Candies[candy.Key] > 0) {
+                    currentWall.Candies[candy.Key] = candy.Value + 1;
+                    Candies[candy.Key] = candy.Value - 1;
+                }
+                
+
+            }
+
+        }
 
     }
 

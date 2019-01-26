@@ -17,19 +17,28 @@ public class childDetector : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Kid") {
             Debug.Log("grabbable");
-            ps.grabbedKid = other.gameObject;
-            ps.canGrab = true;
+            Debug.Log(ps.grabbedKid[0]);
+            Debug.Log(ps.grabbedKid[1]);
+            if (ps.grabbedKid[0] == null) {
+                ps.canGrab = true;
+                ps.grabbedKid[0] = other.gameObject;
+            } else if (ps.grabbedKid[1] == null) {
+                ps.canGrab = true;
+                ps.grabbedKid[1] = other.gameObject;
+            }
+
         }
 
-        if(other.gameObject.tag == "Building") {
-            Debug.Log("HIT WALL");
+        if (other.gameObject.tag == "Building") {
             other.gameObject.GetComponent<WallBehaviour>();
             cw = other.gameObject.GetComponent<WallBehaviour>();
 
 
             bool canRepair = cw.Candies.Any(x => x.Value < 12);
             if (canRepair) {
-
+                Debug.Log("you can repair this wall");
+                ps.canRepair = true;
+                ps.currentWall = cw;
             }
 
             //if (cw.Candies[candyType] < 12) {
