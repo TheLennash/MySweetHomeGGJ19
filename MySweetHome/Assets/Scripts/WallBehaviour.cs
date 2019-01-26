@@ -4,19 +4,10 @@ using UnityEngine;
 
 public class WallBehaviour : MonoBehaviour
 {
-    //public int CookiesCount;
-    //public int MarshmellowCount;
-    //public int ChocolateCount;
-    //public int CandyCaneCount;
-
-    public int StartSizeCandy;
 
     public void Start()
     {
-        foreach (var candy in Candies)
-        {
-            //candy.
-        }
+
     }
 
 
@@ -29,7 +20,10 @@ public class WallBehaviour : MonoBehaviour
 
     public int GetCandies(string candyType)
     {
-        return Candies[candyType];
+        if (Candies.ContainsKey(candyType))
+            return Candies[candyType];
+        else
+            return 0;
     }
 
     public bool TakeCandies(string candyType)
