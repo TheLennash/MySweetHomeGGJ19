@@ -11,13 +11,13 @@ public class Candy : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
     }
-    private void Update() {
-        if (this.gameObject != null)
-            audioSource.PlayOneShot(pling, 0.7f);
-    }
+    //private void Update() {
+    //    if (this.gameObject != null)
+    //        audioSource.PlayOneShot(pling, 0.7f);
+    //}
 
     private void OnDestroy() {
-        audioSource.PlayOneShot(pling, 0.7f);
+        //audioSource.PlayOneShot(pling, 0.7f);
     }
 
 
