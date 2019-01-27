@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -19,6 +20,12 @@ public class KidScript : MonoBehaviour
 
     public float TopSpeed = 5;
 
+    public GameObject Belly;
+
+    public List<Renderer> shirt;
+
+    public ParticleSystem psystem;
+
     public float Speed
     {
         get
@@ -33,16 +40,15 @@ public class KidScript : MonoBehaviour
 
     public Animator[] animators = new Animator[0];
 
-    public GameObject Belly;
 
 
-    public void Initialize(HouseBehaviour _house)
+    public void Initialize(HouseBehaviour _house, Material mat, string pref)
     {
-        var types = Assembly.GetAssembly(typeof(Candy)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Candy))).ToList();
-        var random = Random.Range(0, types.Count());
 
-        CandyPrefrence = types[random].ToString();
+        CandyPrefrence = pref;
         //Debug.Log("I Love " + CandyPrefrence);
+
+        shirt.All(x => x.material = mat);
 
         House = _house;
         GoGetCandy();
@@ -87,7 +93,7 @@ public class KidScript : MonoBehaviour
         Debug.Log("waiting for position");
 
         //wait until position is reached (or is close)
-        var r = 10;
+        var r = 25;
         while (Vector3.SqrMagnitude(pos - transform.position) > (r * r))
         {
             //check this once per second
@@ -101,6 +107,7 @@ public class KidScript : MonoBehaviour
         {
             a.SetTrigger("EatCandy");
         }
+        psystem.Play();
 
         // get fatter
         Fatness++;
