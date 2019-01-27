@@ -72,7 +72,6 @@ public class playerScript : MonoBehaviour
             GrabKid();
             PutKidInFurnace();
         }
-        SoundSystem();
     }
 
 
@@ -136,22 +135,22 @@ public class playerScript : MonoBehaviour
     {
         if (canRepair)
         {
-            if (Candies["Cookie"] > 0 || currentWall.Candies["Cookie"] < 12)
+            if (Candies["Cookie"] > 0 && currentWall.Candies["Cookie"] < 12)
             {
                 currentWall.Candies["Cookie"]++;
                 Candies["Cookie"]--;
             }
-            if (Candies["Marshmellow"] > 0 || currentWall.Candies["Marshmellow"] < 12)
+            if (Candies["Marshmellow"] > 0 && currentWall.Candies["Marshmellow"] < 12)
             {
                 currentWall.Candies["Marshmellow"]++;
                 Candies["Marshmellow"]--;
             }
-            if (Candies["Chocolate"] > 0 || currentWall.Candies["Chocolate"] < 12)
+            if (Candies["Chocolate"] > 0 && currentWall.Candies["Chocolate"] < 12)
             {
                 currentWall.Candies["Chocolate"]++;
                 Candies["Chocolate"]--;
             }
-            if (Candies["CandyCane"] > 0 || currentWall.Candies["CandyCane"] < 12)
+            if (Candies["CandyCane"] > 0 && currentWall.Candies["CandyCane"] < 12)
             {
                 currentWall.Candies["CandyCane"]++;
                 Candies["CandyCane"]--;
@@ -162,10 +161,8 @@ public class playerScript : MonoBehaviour
 
 
 
-            //foreach (var candy in currentWall.Candies)
-            //{
-            //    if (Candies[candy.Key] > 0)
-            //    {
+            //foreach (var candy in currentWall.Candies) {
+            //    if (Candies[candy.Key] > 0) {
             //        currentWall.Candies[candy.Key]++;
             //        Candies[candy.Key]--;
             //    }

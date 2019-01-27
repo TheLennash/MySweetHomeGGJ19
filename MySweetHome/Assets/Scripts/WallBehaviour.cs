@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class WallBehaviour : MonoBehaviour
 {
 
-    public void Start()
-    {
-
+    private void Update() {
+        GameOver();
     }
 
 
@@ -40,6 +39,7 @@ public class WallBehaviour : MonoBehaviour
     private void GameOver() {
 
         if (Candies[nameof(Cookie)] <= 0 && Candies[nameof(Marshmellow)] <= 0 && Candies[nameof(Chocolate)] <= 0 && Candies[nameof(CandyCane)] <= 0) {
+
             SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
 
 
