@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1488676397908328897
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4908444859570047360}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4908444859570047360
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488676397908328897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.777, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7872064836898223716}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8079528416840090050
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,12 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4c2d1e7ce2434ea12f4b75a008ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSize: 40
+  GameSize: 30
   CandyPrefrence: 
   House: {fileID: 0}
   CandyCount: 0
   TopSpeed: 5
-  Hairlocation: {fileID: 4908444859570047360}
   animators:
   - {fileID: 3433333810159561161}
   - {fileID: 52078118102741820}
@@ -153,10 +122,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Child_Arm (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 22053051b198b3e45911dc9338f9b440, type: 2}
     - target: {fileID: 400012, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.27389458
@@ -213,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 22053051b198b3e45911dc9338f9b440, type: 2}
     - target: {fileID: 13700000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -242,10 +211,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Child_Arm
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 22053051b198b3e45911dc9338f9b440, type: 2}
     - target: {fileID: 400012, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.23581034
@@ -290,6 +255,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 22053051b198b3e45911dc9338f9b440, type: 2}
     - target: {fileID: 13700000, guid: 7474caf49467e2c4a8800b6efd68d291, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -327,10 +296,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 0578460c08fbde2438e043121cf3e932, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7f004f9180d8dd946b8c8d43610b0a34, type: 2}
     - target: {fileID: 400012, guid: 0578460c08fbde2438e043121cf3e932, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.019042097
@@ -375,6 +340,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 0578460c08fbde2438e043121cf3e932, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7f004f9180d8dd946b8c8d43610b0a34, type: 2}
     - target: {fileID: 100000, guid: 0578460c08fbde2438e043121cf3e932, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -414,12 +383,6 @@ Transform:
 --- !u!95 &7872064836908063114 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 9500000, guid: 0578460c08fbde2438e043121cf3e932,
-    type: 3}
-  m_PrefabInstance: {fileID: 7872064836898614506}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7872064836898223716 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400014, guid: 0578460c08fbde2438e043121cf3e932,
     type: 3}
   m_PrefabInstance: {fileID: 7872064836898614506}
   m_PrefabAsset: {fileID: 0}

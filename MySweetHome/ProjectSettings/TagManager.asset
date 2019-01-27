@@ -8,10 +8,6 @@ TagManager:
   - Building
   - Gameboundary
   - Oven
-  - Cookie
-  - Chocolate
-  - CandyCane
-  - Marshmellow
   layers:
   - Default
   - TransparentFX
