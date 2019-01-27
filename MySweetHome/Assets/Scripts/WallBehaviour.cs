@@ -5,10 +5,11 @@ using UnityEngine;
 public class WallBehaviour : MonoBehaviour
 {
 
-    public void Start()
-    {
 
-    }
+    public List<GameObject> cookies;
+    public List<GameObject> marshmellows;
+    public List<GameObject> chocolates;
+    public List<GameObject> candyCanes;
 
 
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
