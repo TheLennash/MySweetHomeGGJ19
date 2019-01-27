@@ -19,9 +19,6 @@ public class WallBehaviour : MonoBehaviour
 
     public int GetCandies(string candyType)
     {
-
-
-
         if (Candies.ContainsKey(candyType))
             return Candies[candyType];
         else
@@ -113,6 +110,86 @@ public class WallBehaviour : MonoBehaviour
             return false;
         return true;
 
+    }
+
+    public void turnOn(string candyType)
+    {
+        GameObject go;
+        var c = Candies[candyType];
+        float per = 0;
+
+        switch (candyType)
+        {
+            case nameof(Cookie):
+                if (cookies.Count > 0)
+                {
+                    per = 12 / cookies.Count;
+
+                    if (cookies.Count % per == 0)
+                    {
+
+                        go = cookies.Where(x => !x.activeInHierarchy).FirstOrDefault();
+
+                        if (go != null)
+                        {
+                            go.SetActive(true);
+                        }
+                    }
+                }
+                break;
+            case nameof(Marshmellow):
+                if (marshmellows.Count > 0)
+                {
+                    per = 12 / marshmellows.Count;
+
+                    if (marshmellows.Count % per == 0)
+                    {
+
+                        go = marshmellows.Where(x => !x.activeInHierarchy).FirstOrDefault();
+
+                        if (go != null)
+                        {
+                            go.SetActive(true);
+                        }
+                    }
+                }
+                break;
+            case nameof(Chocolate):
+                if (chocolates.Count > 0)
+                {
+                    per = 12 / chocolates.Count;
+
+                    if (chocolates.Count % per == 0)
+                    {
+
+                        go = chocolates.Where(x => !x.activeInHierarchy).FirstOrDefault();
+
+                        if (go != null)
+                        {
+                            go.SetActive(true);
+                        }
+                    }
+                }
+                break;
+
+            case nameof(CandyCane):
+                if (candyCanes.Count > 0)
+                {
+                    per = 12 / candyCanes.Count;
+
+                    if (candyCanes.Count % per == 0)
+                    {
+
+                        go = candyCanes.Where(x => !x.activeInHierarchy).FirstOrDefault();
+
+                        if (go != null)
+                        {
+                            go.SetActive(true);
+                        }
+                    }
+                }
+                break;
+        }
     }
 
     private void GameOver()

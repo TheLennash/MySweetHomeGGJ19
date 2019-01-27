@@ -78,6 +78,7 @@ public class playerScript : MonoBehaviour
 
     void PlayerMovement()
     {
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //Defines player movement direction
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
@@ -140,21 +141,28 @@ public class playerScript : MonoBehaviour
             {
                 currentWall.Candies["Cookie"]++;
                 Candies["Cookie"]--;
+                currentWall.turnOn(nameof(Cookie));
             }
             if (Candies["Marshmellow"] > 0 || currentWall.Candies["Marshmellow"] < 12)
             {
                 currentWall.Candies["Marshmellow"]++;
                 Candies["Marshmellow"]--;
+                currentWall.turnOn(nameof(Marshmellow));
+
             }
             if (Candies["Chocolate"] > 0 || currentWall.Candies["Chocolate"] < 12)
             {
                 currentWall.Candies["Chocolate"]++;
                 Candies["Chocolate"]--;
+                currentWall.turnOn(nameof(Chocolate));
+
             }
             if (Candies["CandyCane"] > 0 || currentWall.Candies["CandyCane"] < 12)
             {
                 currentWall.Candies["CandyCane"]++;
                 Candies["CandyCane"]--;
+                currentWall.turnOn(nameof(CandyCane));
+
             }
 
 
