@@ -11619,6 +11619,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715422868130801285, guid: 2123e87afb4e7294c90024a9190c7f80,
         type: 3}
+      propertyPath: Hairs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715422868130801285, guid: 2123e87afb4e7294c90024a9190c7f80,
+        type: 3}
       propertyPath: House
       value: 
       objectReference: {fileID: 1756508779}
