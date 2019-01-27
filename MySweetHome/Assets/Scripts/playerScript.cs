@@ -72,7 +72,7 @@ public class playerScript : MonoBehaviour
             GrabKid();
             PutKidInFurnace();
         }
-        SoundSystem();
+        //SoundSystem();
     }
 
 

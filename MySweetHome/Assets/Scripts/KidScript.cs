@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +24,8 @@ public class KidScript : MonoBehaviour
     public List<Renderer> shirt;
 
     public ParticleSystem psystem;
+
+    Vector3 wantedPos = Vector3.zero;
 
     public float Speed
     {
@@ -59,7 +60,8 @@ public class KidScript : MonoBehaviour
     {
         //go to a wall;
         var targetWall = House.GetTargetWall(this);// House.Walls.OrderBy(x => x.GetCandies(CandyPrefrence)).Select(x => x).ToArray()[0];
-        if (!this.GetComponent<NavMeshAgent>().SetDestination(targetWall.transform.position))
+        wantedPos = targetWall.transform.position;
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(wantedPos))
         {
             GoGetCandy();
             return;
@@ -71,12 +73,22 @@ public class KidScript : MonoBehaviour
         // happends in trigger
     }
 
+    private void Update()
+    {
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(wantedPos))
+        {
+
+        }
+    }
+
     public void GoEatCandy()
     {
         // go to location in circle of house;
         var GoTo = Random.insideUnitCircle.normalized * GameSize;
 
-        if (!this.GetComponent<NavMeshAgent>().SetDestination(GoTo))
+
+        wantedPos = new Vector3(GoTo.x, 0, GoTo.y);
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(wantedPos))
         {
             GoEatCandy();
             return;
