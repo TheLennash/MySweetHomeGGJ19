@@ -105,10 +105,24 @@ public class KidScript : MonoBehaviour
         Debug.Log("waiting for position");
 
         //wait until position is reached (or is close)
-        var r = 25;
-        while (Vector3.SqrMagnitude(pos - transform.position) > (r * r))
+        var r = 5;
+        bool done = false;
+        var mNavMeshAgent = this.GetComponent<NavMeshAgent>();
+        while (!done)
         {
             //check this once per second
+
+            if (!mNavMeshAgent.pathPending)
+            {
+                if (mNavMeshAgent.remainingDistance <= mNavMeshAgent.stoppingDistance)
+                {
+                    if (!mNavMeshAgent.hasPath || mNavMeshAgent.velocity.sqrMagnitude == 0f)
+                    {
+                        // Done
+                        done = true;
+                    }
+                }
+            }
             yield return new WaitForSeconds(1f);
         }
 
