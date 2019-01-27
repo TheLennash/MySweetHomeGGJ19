@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WallBehaviour : MonoBehaviour
 {
@@ -35,6 +36,18 @@ public class WallBehaviour : MonoBehaviour
         return true;
        
     }
+
+    private void GameOver() {
+
+        if (Candies[nameof(Cookie)] <= 0 && Candies[nameof(Marshmellow)] <= 0 && Candies[nameof(Chocolate)] <= 0 && Candies[nameof(CandyCane)] <= 0) {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+
+
+        }
+
+    }
+
+
 
 
 

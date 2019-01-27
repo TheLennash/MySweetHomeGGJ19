@@ -65,6 +65,7 @@ public class playerScript : MonoBehaviour
             GrabKid();
             PutKidInFurnace();
         }
+        SoundSystem();
     }
 
 
@@ -89,6 +90,7 @@ public class playerScript : MonoBehaviour
     {
         animator.SetTrigger("GrabChildren");
         audioSource.PlayOneShot(grabSound, 1);
+
         //Debug.Log("GGRABBING@");
         //inv full
         if (!grabbedKid.Any(x => x == null))
