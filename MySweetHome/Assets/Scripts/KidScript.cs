@@ -19,6 +19,8 @@ public class KidScript : MonoBehaviour
 
     public float TopSpeed = 5;
 
+    public Transform Hairlocation;
+
     public float Speed
     {
         get
@@ -36,13 +38,14 @@ public class KidScript : MonoBehaviour
     public GameObject Belly;
 
 
-    public void Initialize(HouseBehaviour _house)
+    public void Initialize(HouseBehaviour _house, string Prefrence, GameObject hair)
     {
-        var types = Assembly.GetAssembly(typeof(Candy)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Candy))).ToList();
-        var random = Random.Range(0, types.Count());
 
-        CandyPrefrence = types[random].ToString();
         //Debug.Log("I Love " + CandyPrefrence);
+
+        CandyPrefrence = Prefrence;
+
+        //var hairObj = GameObject.Instantiate(hair, Vector3.zero, Quaternion.identity, Hairlocation);
 
         House = _house;
         GoGetCandy();
@@ -68,16 +71,17 @@ public class KidScript : MonoBehaviour
     public void GoEatCandy()
     {
         // go to location in circle of house;
-        var GoTo = Random.insideUnitCircle.normalized * GameSize;
+        var GoTo = (Random.insideUnitCircle * GameSize);
+        var destination = new Vector3(GoTo.x, 0, GoTo.y);
 
-        if (!this.GetComponent<NavMeshAgent>().SetDestination(GoTo))
+        if (!this.GetComponent<NavMeshAgent>().SetDestination(destination))
         {
             GoEatCandy();
             return;
         }
 
         //this checks if youve reached the pos;
-        StartCoroutine(GoToPosition(GoTo));
+        StartCoroutine(GoToPosition(destination));
 
 
     }
@@ -119,26 +123,31 @@ public class KidScript : MonoBehaviour
             var wall = other.GetComponent<WallBehaviour>();
             if (wall != null)
             {
-                if (wall.TakeCandies(CandyPrefrence))
+
+                for (int i = 0; i < Fatness; i++)
                 {
-                    Debug.Log("Take Candy");
-                    //grab candy;
-                    foreach (var a in animators)
+                    if (wall.TakeCandies(CandyPrefrence))
                     {
-                        a.SetTrigger("EatCandy");
+                        Debug.Log("Take Candy");
+                        CandyCount++;
+                        GoEatCandy();
                     }
-
-                    CandyCount++;
-
-                    GoEatCandy();
+                    else
+                    {
+                        // try again
+                        //could not take candy.
+                        Debug.LogWarning("could not take candy");
+                        GoGetCandy();
+                        break;
+                    }
                 }
-                else
+
+                //grab candy;
+                foreach (var a in animators)
                 {
-                    // try again
-                    //could not take candy.
-                    Debug.Log("could not take candy");
-                    GoGetCandy();
+                    a.SetTrigger("EatCandy");
                 }
+
             }
         }
         //Destroy(this.gameObject);

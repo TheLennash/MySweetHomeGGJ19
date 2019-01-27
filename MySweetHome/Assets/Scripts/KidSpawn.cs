@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 public class KidSpawn : MonoBehaviour
@@ -9,6 +11,8 @@ public class KidSpawn : MonoBehaviour
     public HouseBehaviour House;
 
     public KidScript KidPrefab;
+
+    public List<GameObject> Hairs = new List<GameObject>();
 
     public float SpawnRate = 5f;
 
@@ -41,9 +45,19 @@ public class KidSpawn : MonoBehaviour
     {
         var spawnLoc = SpawnLocations[GetRandomSpawnIndex()];
 
+        var types = Assembly.GetAssembly(typeof(Candy)).GetTypes().Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Candy))).ToList();
+        var random = Random.Range(0, types.Count());
+
+        var CandyPrefrence = types[random].ToString();
+
+        random = Random.Range(0, Hairs.Count());
+
+        var hair = Hairs[random];
+
         //Debug.Log("SpawnKid " + SpawnCount);
         var kid = GameObject.Instantiate<KidScript>(KidPrefab, spawnLoc.position, Quaternion.identity, transform);
-        kid.Initialize(House);
+        
+        kid.Initialize(House, CandyPrefrence, hair);
 
         SpawnCount++;
         //Kids.Add(kid);
