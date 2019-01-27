@@ -293,7 +293,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3141dad2740adb145a9fa9640bac1195, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.132
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 15911937412564005, guid: b64db9710b8d0904e84e925c7baa4a46,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: StartCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 15911937412564001, guid: b64db9710b8d0904e84e925c7baa4a46,
         type: 3}

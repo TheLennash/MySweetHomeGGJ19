@@ -5,6 +5,10 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
 
+    public AudioSource audioSource;
+    public AudioClip pickupSound;
+    public AudioClip grabSound;
+
     public Transform Rotation;
     public Transform child;
 
@@ -41,6 +45,7 @@ public class playerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         cd = GetComponentInChildren<childDetector>();
     }
 
@@ -90,8 +95,7 @@ public class playerScript : MonoBehaviour
     void GrabKid()
     {
         animator.SetTrigger("GrabChildren");
-
-
+        audioSource.PlayOneShot(grabSound, 1);
         //Debug.Log("GGRABBING@");
         //inv full
         if (!grabbedKid.Any(x => x == null))
@@ -198,6 +202,7 @@ public class playerScript : MonoBehaviour
                 {
                     Candies[candysort]++;
                     Destroy(col.gameObject);
+                    audioSource.PlayOneShot(pickupSound, 0.3f);
                 }
             }
         }
