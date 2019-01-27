@@ -5,6 +5,10 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
 
+    public AudioSource audioSource;
+    public AudioClip pickupSound;
+    public AudioClip grabSound;
+
     public Transform Rotation;
     public Transform child;
 
@@ -38,6 +42,7 @@ public class playerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         cd = GetComponentInChildren<childDetector>();
     }
 
@@ -83,6 +88,7 @@ public class playerScript : MonoBehaviour
     void GrabKid()
     {
         animator.SetTrigger("GrabChildren");
+        audioSource.PlayOneShot(grabSound, 1);
         //Debug.Log("GGRABBING@");
         //inv full
         if (!grabbedKid.Any(x => x == null))
@@ -118,19 +124,19 @@ public class playerScript : MonoBehaviour
     {
         if (canRepair)
         {   
-            if(Candies["Cookie"] > 0 || currentWall.Candies["Cookie"] < 12) {
+            if(Candies["Cookie"] > 0 && currentWall.Candies["Cookie"] < 12) {
                 currentWall.Candies["Cookie"]++;
                 Candies["Cookie"]--;
             }
-            if (Candies["Marshmellow"] > 0 || currentWall.Candies["Marshmellow"] < 12) {
+            if (Candies["Marshmellow"] > 0 && currentWall.Candies["Marshmellow"] < 12) {
                 currentWall.Candies["Marshmellow"]++;
                 Candies["Marshmellow"]--;
             }
-            if (Candies["Chocolate"] > 0 || currentWall.Candies["Chocolate"] < 12) {
+            if (Candies["Chocolate"] > 0 && currentWall.Candies["Chocolate"] < 12) {
                 currentWall.Candies["Chocolate"]++;
                 Candies["Chocolate"]--;
             }
-            if (Candies["CandyCane"] > 0 || currentWall.Candies["CandyCane"] < 12) {
+            if (Candies["CandyCane"] > 0 && currentWall.Candies["CandyCane"] < 12) {
                 currentWall.Candies["CandyCane"]++;
                 Candies["CandyCane"]--;
             }
@@ -176,6 +182,7 @@ public class playerScript : MonoBehaviour
                 if (col.gameObject.tag == candysort) {
                     Candies[candysort]++;
                     Destroy(col.gameObject);
+                    audioSource.PlayOneShot(pickupSound, 0.3f);
                 }
             }
         }
