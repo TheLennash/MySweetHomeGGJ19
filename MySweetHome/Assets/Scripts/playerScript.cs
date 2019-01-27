@@ -21,6 +21,9 @@ public class playerScript : MonoBehaviour
     public bool canMelt;
     public Animator animator;
 
+    //candysorts array
+    public string[] candySorts = new string[4] {"CandyCane", "Chocolate", "Cookie", "Marshmellow" };
+
 
 
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
@@ -41,8 +44,18 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentWall != null) {
+            foreach (var candy in currentWall.Candies) {
+                //Now you can access the key and value both separately from this attachStat as:
+                Debug.Log(candy.Key + candy.Value + "WALL");
+            }
+        }
         transform.rotation = Rotation.rotation;
         PlayerMovement();
+        if (Input.GetKeyDown(KeyCode.E)) {
+            RepairWall();
+        }
+       
         if (Input.GetKeyDown(KeyCode.Q)) {
             GrabKid();
             PutKidInFurnace();
@@ -103,18 +116,43 @@ public class playerScript : MonoBehaviour
 
     void RepairWall()
     {
-        if (canRepair == true && Input.GetKeyDown(KeyCode.E))
-        {
-            foreach (var candy in currentWall.Candies)
-            {
-                if (Candies[candy.Key] > 0)
-                {
-                    currentWall.Candies[candy.Key] = candy.Value + 1;
-                    Candies[candy.Key] = candy.Value - 1;
-                }
+        if (canRepair)
+        {   
+            if(Candies["Cookie"] > 0 || currentWall.Candies["Cookie"] < 12) {
+                currentWall.Candies["Cookie"]++;
+                Candies["Cookie"]--;
             }
+            if (Candies["Marshmellow"] > 0 || currentWall.Candies["Marshmellow"] < 12) {
+                currentWall.Candies["Marshmellow"]++;
+                Candies["Marshmellow"]--;
+            }
+            if (Candies["Chocolate"] > 0 || currentWall.Candies["Chocolate"] < 12) {
+                currentWall.Candies["Chocolate"]++;
+                Candies["Chocolate"]--;
+            }
+            if (Candies["CandyCane"] > 0 || currentWall.Candies["CandyCane"] < 12) {
+                currentWall.Candies["CandyCane"]++;
+                Candies["CandyCane"]--;
+            }
+
+
+
+
+
+
+            //foreach (var candy in currentWall.Candies)
+            //{
+            //    if (Candies[candy.Key] > 0)
+            //    {
+            //        currentWall.Candies[candy.Key]++;
+            //        Candies[candy.Key]--;
+            //    }
+            //}
+
         }
     }
+
+
 
     void PutKidInFurnace() {
         if (canMelt) {
@@ -129,6 +167,17 @@ public class playerScript : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    private void OnCollisionEnter(Collision col) {
+        if (col.gameObject.tag == "CandyCane" || col.gameObject.tag == "Chocolate" || col.gameObject.tag == "Cookie" || col.gameObject.tag == "Marshmellow") {
+            foreach (var candysort in candySorts) {
+                if (col.gameObject.tag == candysort) {
+                    Candies[candysort]++;
+                    Destroy(col.gameObject);
+                }
+            }
         }
     }
 }
