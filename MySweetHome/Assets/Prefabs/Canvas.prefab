@@ -1060,7 +1060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'E for grab
+  m_Text: 'e for repair
 
 '
 --- !u!1 &2519005912369225861
@@ -1173,8 +1173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 344, y: 134.88}
-  m_SizeDelta: {x: 126.5, y: 29.78}
+  m_AnchoredPosition: {x: 323.76, y: 134.88}
+  m_SizeDelta: {x: 166.98, y: 29.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5310363871007050605
 CanvasRenderer:
@@ -1247,8 +1247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.1, y: -0.0000019073}
-  m_SizeDelta: {x: 100.29, y: 18.81}
+  m_AnchoredPosition: {x: -8.14, y: -0.0000019073}
+  m_SizeDelta: {x: 129.5, y: 18.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5183666208379202736
 CanvasRenderer:
@@ -1291,4 +1291,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Q for grab
+  m_Text: q for grab/furnace
