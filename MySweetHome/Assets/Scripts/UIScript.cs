@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
@@ -44,7 +45,9 @@ public class UIScript : MonoBehaviour
     }
 
     void TimeManagement() {
-        time += Time.deltaTime;
+        if (SceneManager.GetActiveScene().name == "SampleScene") {
+            time += Time.deltaTime;
+        }
 
         var minutes = time / 60; //Divide the guiTime by sixty to get the minutes.
         var seconds = time % 60;//Use the euclidean division for the seconds.

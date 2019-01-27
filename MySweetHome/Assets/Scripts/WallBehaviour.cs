@@ -10,6 +10,11 @@ public class WallBehaviour : MonoBehaviour
     public List<GameObject> chocolates;
     public List<GameObject> candyCanes;
 
+    private void Update() {
+        GameOver();
+    }
+
+
     public Dictionary<string, int> Candies = new Dictionary<string, int>() {
         { nameof(Cookie) , 12 },
         { nameof(Marshmellow) , 12 },
@@ -195,8 +200,8 @@ public class WallBehaviour : MonoBehaviour
     private void GameOver()
     {
 
-        if (Candies[nameof(Cookie)] <= 0 && Candies[nameof(Marshmellow)] <= 0 && Candies[nameof(Chocolate)] <= 0 && Candies[nameof(CandyCane)] <= 0)
-        {
+        if (Candies[nameof(Cookie)] <= 0 && Candies[nameof(Marshmellow)] <= 0 && Candies[nameof(Chocolate)] <= 0 && Candies[nameof(CandyCane)] <= 0) {
+
             SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
 
 
